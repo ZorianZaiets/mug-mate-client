@@ -3,7 +3,7 @@ import {React, useState, useEffect} from 'react';
 
 
 function PayButton({sumToPay, currency, orderId}) {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = 'https://mug-mate-server.vercel.app';
     console.log('API_URL:',apiUrl);
 
     const [signature, setSignature] = useState(''); // Стейт для подписи
