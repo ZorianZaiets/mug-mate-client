@@ -1,11 +1,10 @@
-
 @media screen and (min-width: 801px) {
 
     .order-form {
         margin-top: 86px;
     }
 
-    .order-form-wrap{
+    .order-form-wrap {
         border-right: 1px solid #dfdfdf;
         padding: 38px;
         max-width: 660px;
@@ -14,21 +13,33 @@
     .order-form-container {
         border-top: 1px solid #dfdfdf;
     }
-    .mobile-review-order-button{
+
+    .mobile-review-order-button {
         display: none;
     }
 
-    .review-order-button{
+    .review-order-button {
         display: block;
     }
 
-    .mobile-form-split-line{
+    .mobile-form-split-line {
         display: none;
     }
+
+    .confirmation-row{
+        height: 700px;
+    }
+
+    .confirmation-container{
+        width: 660px;
+        padding:38px;
+        border-right: 1px solid #dfdfdf;
+    }
+
 }
 
 @media screen and (max-width: 800px) {
-    .order-options{
+    .order-options {
         flex-direction: column;
     }
 
@@ -38,38 +49,50 @@
         justify-content: center;
     }
 
-    .order-form-wrap{
+    .order-form-wrap {
         padding: 15px 30px;
-
     }
 
-    .order-form-container{
+    .order-form-container {
         display: flex;
         justify-content: center;
     }
 
-    .mobile-review-order-button{
+    .mobile-review-order-button {
         display: block;
     }
-    .review-order-button{
+
+    .review-order-button {
         display: none;
     }
 
-    .product-buy{
+    .product-buy {
         width: 100%;
-        flex-direction: column;
         align-items: center;
+
     }
 
-    .mobile-form-split-line{
+    .mobile-form-split-line {
         display: block;
     }
 
-    .mobile-review-button-container{
+    .mobile-review-button-container {
         display: flex;
         justify-content: center;
         width: 100%;
-        padding: 15px 30px ;
+        padding: 15px 30px;
+    }
+
+    .confirmation-row{
+        flex-direction: column;
+    }
+    .confirmation-container{
+
+        padding: 15px 30px;
+    }
+
+    .mobile-pay-button-container{
+        padding: 0 30px 30px 30px;
     }
 }
 
@@ -91,7 +114,6 @@
 }
 
 
-
 .order-options {
     position: relative;
     display: flex;
@@ -108,7 +130,7 @@
     margin-top: 10px;
 }
 
-.mobile-form-split-line{
+.mobile-form-split-line {
     border: none; /* Убираем стандартную границу */
     height: 1px; /* Высота линии */
     background-color: #dfdfdf; /* Цвет линии */
@@ -149,5 +171,11 @@
     justify-content: center;
 }
 
+.confirmation-row{
+    margin-top: 86px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
 
 

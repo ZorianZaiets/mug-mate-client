@@ -3,7 +3,7 @@ import './OrderConfirmaton.css'
 import React from 'react';
 import PayButton from "../payButton/PayButton";
 
-function OrderConfirmation({toggleConfirmation, paymentType, formData, sumToPay, currency }) {
+function OrderConfirmation({toggleConfirmation, formData}) {
     return (
 
         <div className="order-confirmation-container">
@@ -23,7 +23,6 @@ function OrderConfirmation({toggleConfirmation, paymentType, formData, sumToPay,
                         <p className="confirmation-info-label">Recipient</p>
                         <p>{formData.name} {formData.surname}</p>
                     </div>
-
                     <button className="change-button" onClick={toggleConfirmation}>Change</button>
                 </div>
 
@@ -32,8 +31,6 @@ function OrderConfirmation({toggleConfirmation, paymentType, formData, sumToPay,
                         <p className="confirmation-info-label">Phone</p>
                         <p>{formData.phone}</p>
                     </div>
-
-
                     <button className="change-button" onClick={toggleConfirmation}>Change</button>
                 </div>
 
@@ -45,15 +42,9 @@ function OrderConfirmation({toggleConfirmation, paymentType, formData, sumToPay,
 
                     <button className="change-button" onClick={toggleConfirmation}>Change</button>
                 </div>
-
             </div>
 
-            {paymentType === "payNow" ? (
-                    <PayButton sumToPay={sumToPay} currency={currency}/>
-                ) : (
-                    <button className="make-order-button" onClick={toggleConfirmation}>Make Order</button>
-                )}
-
+                {/*<button className="make-order-button" onClick={toggleConfirmation}>Make Order</button>*/}
         </div>
 
     );

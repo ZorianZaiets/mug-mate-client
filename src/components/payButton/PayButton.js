@@ -2,7 +2,7 @@ import './PayButton.css'
 import {React, useState, useEffect} from 'react';
 
 
-function PayButton({sumToPay, currency, orderId}) {
+function PayButton({sumToPay, currency}) {
     const apiUrl = 'https://mug-mate-server.vercel.app';
     console.log('API_URL:',apiUrl);
 
@@ -71,7 +71,7 @@ function PayButton({sumToPay, currency, orderId}) {
         <div>
             <form id="payment-form" method="POST" action="https://www.liqpay.ua/api/3/checkout"
                   accept-charset="utf-8"
-                  target="_blank" onSubmit={handleSubmit}> >
+                  onSubmit={handleSubmit}>
                 <input type="hidden" name="data"
                        value={data}/>
                 <input type="hidden" name="signature"

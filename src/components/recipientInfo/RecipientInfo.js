@@ -7,15 +7,6 @@ function RecipientInfo({handleChangeInput, formData}) {
 
     const handleChange = (e) => {
         const value = e.target.value;
-        const regex = /^[0-9\s\+\-\(\)]+$/;
-
-        // Проверяем, соответствует ли значение регулярному выражению
-        if (regex.test(value) || value === '') {
-            setPhone(value);
-            setError(''); // Сбрасываем ошибку
-        } else {
-            setError('Неверный формат номера телефона'); // Устанавливаем ошибку
-        }
     }
 
     return (
