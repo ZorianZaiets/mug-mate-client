@@ -1,0 +1,10 @@
+.slider-card{
+    position: relative;
+    width:275px;
+    height:406px;
+}
+
+.slider-container{
+    max-width: 500px;
+    max-height: 300px;
+}

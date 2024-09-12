@@ -1,0 +1,153 @@
+
+@media screen and (min-width: 801px) {
+
+    .order-form {
+        margin-top: 86px;
+    }
+
+    .order-form-wrap{
+        border-right: 1px solid #dfdfdf;
+        padding: 38px;
+        max-width: 660px;
+    }
+
+    .order-form-container {
+        border-top: 1px solid #dfdfdf;
+    }
+    .mobile-review-order-button{
+        display: none;
+    }
+
+    .review-order-button{
+        display: block;
+    }
+
+    .mobile-form-split-line{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .order-options{
+        flex-direction: column;
+    }
+
+    .order-form {
+        display: flex;
+        margin-top: 72px;
+        justify-content: center;
+    }
+
+    .order-form-wrap{
+        padding: 15px 30px;
+
+    }
+
+    .order-form-container{
+        display: flex;
+        justify-content: center;
+    }
+
+    .mobile-review-order-button{
+        display: block;
+    }
+    .review-order-button{
+        display: none;
+    }
+
+    .product-buy{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobile-form-split-line{
+        display: block;
+    }
+
+    .mobile-review-button-container{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 15px 30px ;
+    }
+}
+
+
+.order-form-wrap {
+    position: relative;
+
+
+    width: 100%;
+
+}
+
+.order-form-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 100%;
+}
+
+
+
+.order-options {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: white;
+}
+
+.form-split-line {
+    border: none; /* Убираем стандартную границу */
+    height: 1px; /* Высота линии */
+    background-color: #dfdfdf; /* Цвет линии */
+    width: 100%;
+    margin-top: 10px;
+}
+
+.mobile-form-split-line{
+    border: none; /* Убираем стандартную границу */
+    height: 1px; /* Высота линии */
+    background-color: #dfdfdf; /* Цвет линии */
+    width: 100%;
+}
+
+
+.review-order-button {
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    background-color: #197bbd;
+    border-radius: 5px;
+    width: 100%;
+    height: 60px;
+}
+
+
+.review-order-button:hover {
+    opacity: 0.8;
+}
+
+
+.mobile-review-order-button {
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+    background-color: #197bbd;
+    border-radius: 5px;
+    width: 330px;
+    height: 60px;
+}
+
+
+.product-buy {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+
+

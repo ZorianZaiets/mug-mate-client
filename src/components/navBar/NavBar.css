@@ -1,0 +1,164 @@
+
+@media screen and (min-width: 801px) {
+    .nav__row{
+        display: flex;
+    }
+    .mobile-nav{
+        display: none;
+    }
+
+    .nav__logo{
+        font-size: 30px;
+    }
+
+    .nav__row{
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .nav__row{
+        display: none;
+    }
+
+    .nav-button{
+        display:flex;
+    }
+
+    .nav__logo{
+        font-size: 20px;
+    }
+
+    .nav-button{
+        z-index: 1000;
+    }
+
+    .mobile-cart-img{
+        height: 27px;
+        width: 27px;
+    }
+
+    .mobile-nav{
+        display:flex;
+        justify-content: space-between;
+        padding: 20px 0;
+        column-gap: 30px;
+    }
+}
+
+
+.nav-bar {
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.nav-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: -1; /* Чтобы фон оставался позади содержимого */
+}
+
+.nav__row {
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 80px;
+    padding: 20px 0;
+}
+
+.nav-button{
+    width: 32px;
+    height: 32px;
+    flex-direction: column;
+    row-gap: 3px;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-button-line{
+    display: block;
+    height: 5px;
+    background: black;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 25px;
+    align-items: center;
+    text-align: center;
+}
+
+.nav__list {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 25px;
+}
+
+.nav__logo {
+    text-decoration: none;
+    font-weight: 700;
+    color: inherit; /* Наследовать цвет от родительского элемента */
+    outline: none; /* Убрать рамку при фокусе */
+}
+
+.nav__link {
+    font-size: 18px;
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+    padding-bottom: 6px;
+
+}
+
+.nav__link:hover{
+    border-bottom: 2px solid black;
+}
+
+.empty-cart-button{
+
+}
+
+.empty-cart-button img{
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.nav-cart-button {
+    display: flex;
+    gap:5px;
+    align-items: center;
+    background: #373737;
+    color:white;
+    height: 39px;
+    max-width: 140px;
+    padding: 0 10px;
+
+}
+
+.nav-cart-button img {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.nav-cart-button p{
+    font-size: 13px;
+    line-height: 1;
+}
+

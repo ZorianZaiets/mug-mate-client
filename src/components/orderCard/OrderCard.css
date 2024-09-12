@@ -1,0 +1,44 @@
+.order-card {
+    position: relative;
+    align-items: center;
+    padding: 15px;
+}
+
+.card-item{
+    padding: 0 15px;
+}
+
+.card-item-img {
+    position: relative;
+    object-fit: cover;
+    width: 215px;
+    height: 322px;
+    padding-bottom: 10px;
+}
+
+.card-item-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-item-title{
+    width: 104px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.card-item-price-block{
+    display: flex;
+    column-gap: 7px;
+    align-items: center;
+    font-weight: 400;
+}
+
+.from{
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+

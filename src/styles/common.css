@@ -1,0 +1,46 @@
+body{
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+.container{
+    max-width: 1780px;
+    margin: 0 auto;
+    padding:0 30px;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+.no-scroll{
+    overflow: hidden;
+}
+
+p{
+    display: block;
+    unicode-bidi: isolate;
+}
+
+
+
+    /* WebKit */
+::-webkit-scrollbar {
+    border-radius: 5px;
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    width: 4px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

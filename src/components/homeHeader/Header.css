@@ -1,0 +1,94 @@
+
+@media screen and (min-width: 601px) {
+    .presenting__title {
+        font-size: 70px;
+    }
+    .presenting__slogan{
+        font-size: 24px;
+    }
+    .header{
+        background-image: url("../../img/header_img.jpg");
+    }
+
+    .presenting__about{
+        width: 100%;
+        max-width: 500px;
+        padding: 250px 0 0 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .presenting__title{
+        font-size: 50px;
+    }
+
+    .presenting__slogan{
+        font-size: 18px;
+    }
+
+    .header{
+        background-image: url("../../img/header-img-mobile.jpg");
+    }
+
+    .presenting__about{
+        padding: 150px 0px;
+        width: 100%;
+    }
+
+}
+
+.header{
+    position: relative;
+    display: block;
+    height: 100vh;
+    width: 100%;
+    color: white;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.presenting__about{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+}
+
+.presenting__title{
+    position: relative;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.presenting__slogan{
+    position: relative;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: lightgrey;
+}
+
+
+.order__button{
+    font-weight: 500;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    padding: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень */
+    transition: box-shadow 0.3s ease; /* Плавный переход для тени */
+    max-width: 600px;
+}
+
+.order__button:hover{
+    color: black;
+    background-color: white;
+    opacity: 0.7;
+}
+
+
+
