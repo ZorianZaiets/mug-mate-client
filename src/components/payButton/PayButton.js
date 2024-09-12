@@ -24,7 +24,8 @@ function PayButton({sumToPay, currency, orderId}) {
             "amount": `${sumToPay}`,
             "currency": `${currency}`,
             "description": "test",
-            "order_id": `${orderId}`
+            "order_id": `${orderId}`,
+            "result_url": "https://mug-mate-client.vercel.app/"
         }
 
 
