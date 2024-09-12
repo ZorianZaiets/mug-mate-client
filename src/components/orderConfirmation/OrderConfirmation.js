@@ -4,7 +4,6 @@ import React from 'react';
 import PayButton from "../payButton/PayButton";
 
 function OrderConfirmation({toggleConfirmation, paymentType, formData, sumToPay, currency }) {
-    const orderId = Math.floor(100000 + Math.random() * 900000);
     return (
 
         <div className="order-confirmation-container">
@@ -50,7 +49,7 @@ function OrderConfirmation({toggleConfirmation, paymentType, formData, sumToPay,
             </div>
 
             {paymentType === "payNow" ? (
-                    <PayButton sumToPay={sumToPay} currency={currency} orderId={orderId}/>
+                    <PayButton sumToPay={sumToPay} currency={currency}/>
                 ) : (
                     <button className="make-order-button" onClick={toggleConfirmation}>Make Order</button>
                 )}

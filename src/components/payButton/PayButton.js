@@ -16,6 +16,7 @@ function PayButton({sumToPay, currency, orderId}) {
         event.preventDefault(); // Отключаем стандартную отправку формы
         setIsLoading(true); // Устанавливаем флаг загрузки
         setReceivedSignature(false);
+        const orderId = Math.floor(100000 + Math.random() * 900000);
 
         const json_string = {
             "public_key": "sandbox_i96984545373",
@@ -24,8 +25,7 @@ function PayButton({sumToPay, currency, orderId}) {
             "amount": `${sumToPay}`,
             "currency": `${currency}`,
             "description": "test",
-            "order_id": `${orderId}`,
-            "result_url": "https://mug-mate-client.vercel.app/"
+            "order_id": `${orderId}`
         }
 
 
