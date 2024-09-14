@@ -46,33 +46,73 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
         cartitems: []
     });
 
+    const [errors, setErrors] = useState({});
 
-    const handleChangeInput = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
+
+    const validate = () => {
+        const newErrors = {};
+
+        // Проверка имени
+        if (!formData.name.trim()) {
+            newErrors.name = "Name is required";
+        }
+
+        if (!formData.surname.trim()) {
+            newErrors.surname = "Surname is required";
+        }
+
+        if (!formData.address.trim()) {
+            newErrors.address = "Address is required";
+        }
+
+
+        if (!formData.city.trim()) {
+            newErrors.city = "City is required";
+        }
+
+        if (!formData.postcode.trim()) {
+            newErrors.postcode = "Postcode is required";
+        }
+
+
+        // Проверка email (простая проверка на "@" и ".")
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!formData.email.trim()) {
+            newErrors.email = "Email is required";
+        } else if (!emailPattern.test(formData.email)) {
+            newErrors.email = "Email is not valid";
+        }
+
+        // Проверка телефона (только цифры и знак "+")
+        const phonePattern = /^[+]?[\d]+$/;
+        if (!formData.phone.trim()) {
+            newErrors.phone = "Phone is required";
+        } else if (!phonePattern.test(formData.phone)) {
+            newErrors.phone = "Phone must contain only digits and '+'";
+        }
+
+        return newErrors;
     };
 
 
     const handleSubmit = () => {
+        const validationErrors = validate();
 
         formData.post = postType;
         formData.cartitems = cartItems;
-        //console.log('Отправляем данные:', formData);
-        // Здесь можно использовать fetch или axios для отправки на сервер
-        toggleConfirmation();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        if (Object.keys(validationErrors).length === 0) {
+            // Данные валидны
+            console.log("Form submitted", formData);
+            setErrors(validationErrors);
+            toggleConfirmation();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        } else {
+            // Есть ошибки
+            setErrors(validationErrors);
+        }
+
     };
-
-
-    /*Релиазована оплата, все работает корректно. План на завтра:
-    * Валидация данных - пользователя не должно пропускать к оплате если он не ввел свои данные.
-    * Один из способов доставки должен быть по умолчанию выбран чтобы избежать конфликта с общей суммой.
-    * Адаптация интерфейста подтверждения оплаты на мобильные устройства.
-    * Разобраться как задеплоить сервер на хостинг.
-    * Так же разобраться как получить результат оплаты заказа.
-    * */
 
     const [isMobileView, setIsMobileView] = useState(window.innerWidth < 800);
 
@@ -88,6 +128,7 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
 
     return (
         <div>
@@ -105,9 +146,9 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
                                     convertPrice={convertPrice} deliveryPrice={deliveryPrice}
                                     formattedAmount={formattedAmount} setSumToPay={setSumToPay}/>
                         {isMobileView &&
-                        <div className="mobile-pay-button-container">
-                            <PayButton sumToPay={sumToPay} currency={currency}/>
-                        </div> }
+                            <div className="mobile-pay-button-container">
+                                <PayButton sumToPay={sumToPay} currency={currency}/>
+                            </div>}
 
                     </div>
 
@@ -121,7 +162,8 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
                             <div className="order-form-wrap">
                                 <form className="order-form-form">
 
-                                    <RecipientInfo handleChangeInput={handleChangeInput} formData={formData}/>
+                                    <RecipientInfo setFormData={setFormData} formData={formData} errors={errors}
+                                                   validate={validate} setErrors={setErrors} />
 
                                     <hr className="form-split-line"/>
 
