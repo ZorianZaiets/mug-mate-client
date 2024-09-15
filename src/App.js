@@ -10,6 +10,7 @@ import plastik_cupholder from "./img/plastik-cupholder.jpeg";
 import aluminium_wood_cupholder from "./img/aluminium-wood-cupholder.jpeg";
 import NavBar from "./components/navBar/NavBar";
 import Footer from "./components/footer/Footer";
+import About from './components/pages/aboutPage/About'
 
 function App() {
 
@@ -142,6 +143,7 @@ function App() {
                 <Route path="/order" element={<Order currencyChar={currencyChar} convertPrice={convertPrice} cart={cart}
                                                      totalAmount={totalAmount} formattedAmount={formattedAmount}
                                                      currency={currency}/>}/>
+                <Route path="/about" element={<About />}/>
             </Routes>
             {isCartOpen && <CartModal cart={cart} toggleCart={toggleCart}
                                       removeFromCart={removeFromCart} updateQuantity={updateQuantity}
