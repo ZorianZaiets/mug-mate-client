@@ -4,7 +4,7 @@ import alluminium_cnc from '../../../img/alluminium-cnc.png'
 import wood_cnc from '../../../img/wood-cnc.png'
 import ddd_printing from '../../../img/3d_printing.jpg'
 import type_c_connection from '../../../img/type-c-connection.jpg'
-import coffe_perfect_moment from '../../../img/coffe-perfect-moment.jpg'
+import coffee_perfect_moment from '../../../img/coffe-perfect-moment.jpg'
 
 function About(props) {
     return (
@@ -59,7 +59,7 @@ function About(props) {
                         drink is ready
                         for that perfect sip. No more guessing – <strong>MugMate</strong> takes care of you, helping you avoid drinks
                         that are too hot or too cold. </p>
-                    <img src={coffe_perfect_moment} alt=""/>
+                    <img src={coffee_perfect_moment} alt=""/>
 
                     <h2 className="about-common-title">Why Choose MugMate?</h2>
 

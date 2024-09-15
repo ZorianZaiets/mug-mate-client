@@ -11,6 +11,7 @@ import aluminium_wood_cupholder from "./img/aluminium-wood-cupholder.jpeg";
 import NavBar from "./components/navBar/NavBar";
 import Footer from "./components/footer/Footer";
 import About from './components/pages/aboutPage/About'
+import ContactUs from "./components/pages/contactUs/ContactUs";
 
 function App() {
 
@@ -143,7 +144,8 @@ function App() {
                 <Route path="/order" element={<Order currencyChar={currencyChar} convertPrice={convertPrice} cart={cart}
                                                      totalAmount={totalAmount} formattedAmount={formattedAmount}
                                                      currency={currency}/>}/>
-                <Route path="/about" element={<About />}/>
+                <Route path="/about" element={<About/>}/>
+                <Route path="/contact" element={<ContactUs/>}/>
             </Routes>
             {isCartOpen && <CartModal cart={cart} toggleCart={toggleCart}
                                       removeFromCart={removeFromCart} updateQuantity={updateQuantity}

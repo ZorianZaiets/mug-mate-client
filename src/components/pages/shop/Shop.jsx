@@ -7,7 +7,7 @@ function Shop({toggleCart, cart, addToCart, products, convertPrice, currencyChar
         <div>
             <div className="shop">
                 <div className="container">
-                    <h2 className="products-heading">Products</h2>
+                    <h2 className="products-heading">Shop</h2>
                     <div className="products-container">
                         {products.map((product) => (
                             <ProductCard key={product.id} product={product} addToCart={addToCart}

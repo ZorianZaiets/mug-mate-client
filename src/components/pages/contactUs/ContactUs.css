@@ -1,0 +1,151 @@
+@media screen and (min-width: 801px) {
+
+    .contact-us-description {
+        padding: 30px 70px 30px 15px;
+    }
+    .contact-form-container{
+        padding: 30px 15px;
+    }
+    .contact-us{
+        margin-top: 86px;
+    }
+
+    .contact-us-container{
+        padding: 50px 30px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .contact-us-row {
+        flex-direction: column;
+    }
+
+    .contact-us-description {
+        padding: 15px 0;
+    }
+
+    .contact-form-container{
+        padding: 15px 0;
+    }
+
+    .contact-us{
+        margin-top: 72px;
+    }
+    .contact-us-container{
+        padding: 15px 0;
+    }
+
+}
+
+.contact-us {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-us-container {
+
+    max-width: 1100px;
+    width: 100%;
+}
+
+.contact-us-row {
+    display: flex;
+}
+
+.contact-us-title {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.contact-us-description {
+    max-width: 525px;
+
+}
+
+.contact-description-title {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.contact-us-description p {
+    margin-bottom: 15px;
+}
+
+.contact-us-description img {
+    margin-bottom: 15px;
+}
+
+.contact-form-container {
+    max-width: 525px;
+    min-width: 50%;
+
+}
+
+.contact-us-form-title {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+}
+
+.contact-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 9px 0;
+    border-bottom: 2px solid #eaeaea;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.contact-message-input {
+
+    overflow: auto;
+    padding: 9px 0;
+    width: 100%;
+    border-bottom: 2px solid #eaeaea;
+    max-height: 41px;
+    transition: max-height 0.3s ease;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.contact-message-input:focus {
+    outline: none;
+    max-height: 120px;
+}
+
+.area-non-empty {
+    outline: none;
+    max-height: 120px;
+}
+
+.send-message-button {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 12px 15px;
+    background-color: #444444;
+    color: white;
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.contact-media-icons-row{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+
+}
+
+.contact-media-icons-row img{
+    width: 25px;
+    height: 25px;
+}
