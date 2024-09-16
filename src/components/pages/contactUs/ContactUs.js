@@ -8,10 +8,15 @@ import youtube from "../../../img/youtube.png";
 import tiktok from "../../../img/tiktok.png";
 
 function ContactUs(props) {
+
+    const apiUrl = 'https://mug-mate-server.vercel.app';
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
     const [message, setMessage] = useState('');
 
     const [areaNonEmpty, setAreaNonEmpty] = useState(null);
-    // Обработчик изменения текста
+
     const handleChange = (e) => {
         setMessage(e.target.value);
     };
@@ -25,6 +30,32 @@ function ContactUs(props) {
             setAreaNonEmpty(false);
         }
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const userData = {name, email, message};
+
+        try {
+            const response = await fetch(`${apiUrl}/send-message`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data.message);  // Выводите сообщение из ответа
+            } else {
+                console.error('Failed to send message');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
     return (
 
 
@@ -58,15 +89,17 @@ function ContactUs(props) {
                     </aside>
                     <section className="contact-form-container">
                         <h3 className="contact-us-form-title">CONTACT US</h3>
-                        <form action="" className="contact-form">
-                            <input type="text" className="contact-input" placeholder="Enter your name:"/>
-                            <input type="email" className="contact-input" placeholder="Enter your email:"/>
+                        <form className="contact-form" onSubmit={handleSubmit}>
+                            <input type="text" className="contact-input" placeholder="Enter your name:"
+                                   onChange={(e) => setName(e.target.value)} value={name} required />
+                            <input type="email" className="contact-input" placeholder="Enter your email:"
+                                   onChange={(e) => setEmail(e.target.value)} value={email} required/>
                             <textarea name="" id="" cols="30" rows="10"
                                       className={`contact-message-input ${areaNonEmpty && "area-non-empty"}`}
                                       placeholder="Enter your message:" value={message}
                                       onChange={handleChange}
-                                      onBlur={handleBlur}></textarea>
-                            <button className="send-message-button">Send</button>
+                                      onBlur={handleBlur} required></textarea>
+                            <button type="submit" className="send-message-button">Send</button>
                         </form>
                         <h3 className="contact-us-form-title">FOLLOW US</h3>
                         <div className="contact-media-icons-row">
