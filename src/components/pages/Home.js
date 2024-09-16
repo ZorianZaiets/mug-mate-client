@@ -8,13 +8,14 @@ import Footer from "../footer/Footer";
 import MugMateInstagram from "../insagramComponent/MugMateInstagram";
 
 
-const Home = ({toggleCart, cart, products, currencyChar, convertPrice}) => {
+const Home = ({toggleCart, cart, products, currencyChar, convertPrice, formattedAmount, currency, onCurrencyChange}) => {
 
 
 
     return (
         <div>
-
+            <NavBar toggleCart={toggleCart} cart={cart} formattedAmount={formattedAmount}
+                    onCurrencyChange={onCurrencyChange} currencyChar={currencyChar} currency={currency}/>
             <Header />
             <AboutProduct/>
             <Advantages/>

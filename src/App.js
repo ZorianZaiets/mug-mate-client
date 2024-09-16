@@ -134,18 +134,28 @@ function App() {
     return (
 
         <Router>
-            <NavBar toggleCart={toggleCart} cart={cart} formattedAmount={formattedAmount}
-                    onCurrencyChange={handleCurrencyChange} currencyChar={currencyChar} currency={currency}/>
+
             <Routes>
                 <Route path="/"
-                       element={<Home products={products} currencyChar={currencyChar} convertPrice={convertPrice}/>}/>
-                <Route path="/shop" element={<Shop addToCart={addToCart} products={products} convertPrice={convertPrice}
-                                                   currencyChar={currencyChar}/>}/>
+                       element={<Home cart={cart} products={products} currencyChar={currencyChar}
+                                      convertPrice={convertPrice} formattedAmount={formattedAmount}
+                                      toggleCart={toggleCart}   currency={currency}  onCurrencyChange={handleCurrencyChange}/>}/>
+                <Route path="/shop"
+                       element={<Shop cart={cart} addToCart={addToCart} products={products} convertPrice={convertPrice}
+                                      currencyChar={currencyChar} currency={currency} formattedAmount={formattedAmount}
+                                      onCurrencyChange={handleCurrencyChange} toggleCart={toggleCart}/>}/>
                 <Route path="/order" element={<Order currencyChar={currencyChar} convertPrice={convertPrice} cart={cart}
                                                      totalAmount={totalAmount} formattedAmount={formattedAmount}
                                                      currency={currency}/>}/>
-                <Route path="/about" element={<About/>}/>
-                <Route path="/contact" element={<ContactUs/>}/>
+
+                <Route path="/about"
+                       element={<About toggleCart={toggleCart} cart={cart} formattedAmount={formattedAmount}
+                                       onCurrencyChange={handleCurrencyChange} currencyChar={currencyChar}
+                                       currency={currency}/>}/>
+                <Route path="/contact"
+                       element={<ContactUs toggleCart={toggleCart} cart={cart} formattedAmount={formattedAmount}
+                                           onCurrencyChange={handleCurrencyChange} currencyChar={currencyChar}
+                                           currency={currency}/>}/>
             </Routes>
             {isCartOpen && <CartModal cart={cart} toggleCart={toggleCart}
                                       removeFromCart={removeFromCart} updateQuantity={updateQuantity}

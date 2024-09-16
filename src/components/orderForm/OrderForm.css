@@ -1,7 +1,7 @@
 @media screen and (min-width: 801px) {
 
     .order-form {
-        margin-top: 86px;
+
     }
 
     .order-form-wrap {
@@ -11,7 +11,7 @@
     }
 
     .order-form-container {
-        border-top: 1px solid #dfdfdf;
+
     }
 
     .mobile-review-order-button {
@@ -45,7 +45,6 @@
 
     .order-form {
         display: flex;
-        margin-top: 72px;
         justify-content: center;
     }
 
@@ -176,6 +175,13 @@
     display: flex;
     width: 100%;
     justify-content: center;
+}
+
+.order-page-header{
+    display: flex;
+    justify-content: center;
+    padding: 21px 30px;
+    border-bottom: 1px solid #dfdfdf;
 }
 
 

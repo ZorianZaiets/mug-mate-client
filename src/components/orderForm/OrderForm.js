@@ -6,6 +6,7 @@ import RecipientInfo from "../recipientInfo/RecipientInfo";
 import OrderTotal from "../orderTotal/OrderTotal";
 import OrderConfirmation from "../orderConfirmation/OrderConfirmation";
 import PayButton from "../payButton/PayButton";
+import {Link} from "react-router-dom";
 
 
 const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmount, currency}) => {
@@ -132,6 +133,9 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
 
     return (
         <div>
+            <header className="order-page-header">
+                <Link to='/' className="nav__logo">MugMate</Link>
+            </header>
             {isConfirmation ? (
                 <div className="confirmation-row">
                     <div className="confirmation-container">

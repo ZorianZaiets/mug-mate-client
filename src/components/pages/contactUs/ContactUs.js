@@ -7,8 +7,9 @@ import twitter from "../../../img/twitter.png";
 import youtube from "../../../img/youtube.png";
 import tiktok from "../../../img/tiktok.png";
 import Notification from "../../nofitication/Notification";
+import NavBar from "../../navBar/NavBar";
 
-function ContactUs(props) {
+function ContactUs({toggleCart, cart, onCurrencyChange, currency, currencyChar, formattedAmount}) {
 
     const apiUrl = 'https://mug-mate-server.vercel.app';
 
@@ -70,6 +71,8 @@ function ContactUs(props) {
 
     return (
         <div>
+            <NavBar toggleCart={toggleCart} cart={cart} formattedAmount={formattedAmount}
+                    onCurrencyChange={onCurrencyChange} currencyChar={currencyChar} currency={currency}/>
 
                 <Notification onClose={handleCloseNotification} message={notificationMessage} className={notification ? "show" : ""}/>
             <div className="contact-us">
