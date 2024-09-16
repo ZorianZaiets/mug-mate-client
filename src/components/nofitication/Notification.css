@@ -1,0 +1,30 @@
+@media screen and (min-width: 801px) {
+    .notification{
+        left: 50%;
+        transform: translate(-50%);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .notification{
+        left: 20px;
+        right: 20px;
+    }
+}
+
+.notification {
+    position: fixed;
+    bottom: -150px;
+    text-align: center;
+    background-color: #444444; /* Цвет фона уведомления */
+    color: white; /* Цвет текста */
+    padding: 15px; /* Отступы вокруг текста */
+    border-radius: 5px 5px 0 0; /* Закругление только верхних углов */
+    visibility: hidden;
+    transition: all 1s ease-in-out; /* Плавный переход */
+}
+
+.show {
+    bottom: -1px; /* Конечное положение уведомления */
+    visibility: visible;
+}

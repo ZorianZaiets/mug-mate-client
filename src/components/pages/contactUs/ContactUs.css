@@ -3,14 +3,16 @@
     .contact-us-description {
         padding: 30px 70px 30px 15px;
     }
-    .contact-form-container{
+
+    .contact-form-container {
         padding: 30px 15px;
     }
-    .contact-us{
+
+    .contact-us {
         margin-top: 86px;
     }
 
-    .contact-us-container{
+    .contact-us-container {
         padding: 50px 30px;
     }
 }
@@ -25,14 +27,15 @@
         padding: 15px 0;
     }
 
-    .contact-form-container{
+    .contact-form-container {
         padding: 15px 0;
     }
 
-    .contact-us{
+    .contact-us {
         margin-top: 72px;
     }
-    .contact-us-container{
+
+    .contact-us-container {
         padding: 15px 30px;
     }
 
@@ -138,14 +141,16 @@
     margin-bottom: 15px;
 }
 
-.contact-media-icons-row{
+.contact-media-icons-row {
     display: flex;
     justify-content: space-between;
     width: 200px;
 
 }
 
-.contact-media-icons-row img{
+.contact-media-icons-row img {
     width: 25px;
     height: 25px;
 }
+
+
