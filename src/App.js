@@ -4,23 +4,16 @@ import Order from "./components/pages/Order";
 import CartModal from "./components/cartModal/CartModal";
 import Shop from './components/pages/shop/Shop'
 import React, {useEffect, useState} from "react";
-import aluminium_cupholder from "./img/aluminium-cupholder.jpeg";
-import wood_cupholder from "./img/wood-cupholder.jpeg";
-import plastik_cupholder from "./img/plastik-cupholder.jpeg";
-import aluminium_wood_cupholder from "./img/aluminium-wood-cupholder.jpeg";
-import NavBar from "./components/navBar/NavBar";
 import Footer from "./components/footer/Footer";
 import About from './components/pages/aboutPage/About'
 import ContactUs from "./components/pages/contactUs/ContactUs";
+import ProductPage from "./components/pages/shop/productPage/ProductPage";
+
+import {products} from './products'
 
 function App() {
 
-    const products = [
-        {id: 1, title: 'Aluminium Mate', img: aluminium_cupholder, price: '235', route: 'alluminium'},
-        {id: 2, title: 'Wood Mate', img: wood_cupholder, price: '185', route: 'wood'},
-        {id: 3, title: 'Plastik Mate', img: plastik_cupholder, price: '155', route: 'plastic'},
-        {id: 4, title: 'W&A Mate', img: aluminium_wood_cupholder, price: '255', route: 'woodandalluminium'},
-    ];
+
 
 
     //CURRENCY CHANGE LOGIC
@@ -139,11 +132,13 @@ function App() {
                 <Route path="/"
                        element={<Home cart={cart} products={products} currencyChar={currencyChar}
                                       convertPrice={convertPrice} formattedAmount={formattedAmount}
-                                      toggleCart={toggleCart}   currency={currency}  onCurrencyChange={handleCurrencyChange}/>}/>
+                                      toggleCart={toggleCart} currency={currency}
+                                      onCurrencyChange={handleCurrencyChange}/>}/>
                 <Route path="/shop"
                        element={<Shop cart={cart} addToCart={addToCart} products={products} convertPrice={convertPrice}
                                       currencyChar={currencyChar} currency={currency} formattedAmount={formattedAmount}
                                       onCurrencyChange={handleCurrencyChange} toggleCart={toggleCart}/>}/>
+
                 <Route path="/order" element={<Order currencyChar={currencyChar} convertPrice={convertPrice} cart={cart}
                                                      totalAmount={totalAmount} formattedAmount={formattedAmount}
                                                      currency={currency}/>}/>
@@ -156,6 +151,9 @@ function App() {
                        element={<ContactUs toggleCart={toggleCart} cart={cart} formattedAmount={formattedAmount}
                                            onCurrencyChange={handleCurrencyChange} currencyChar={currencyChar}
                                            currency={currency}/>}/>
+                <Route path="/product/:id" element={<ProductPage products = {products} toggleCart={toggleCart} cart={cart} formattedAmount={formattedAmount}
+                                                                 onCurrencyChange={handleCurrencyChange} currencyChar={currencyChar}
+                                                                 currency={currency} convertPrice={convertPrice} addToCart={addToCart}/>} />
             </Routes>
             {isCartOpen && <CartModal cart={cart} toggleCart={toggleCart}
                                       removeFromCart={removeFromCart} updateQuantity={updateQuantity}

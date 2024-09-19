@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import './ContactUs.css'
 import contact_us_image from '../../../img/contact_page_img.jpg'
 import instagram from "../../../img/instagram.png";
@@ -39,7 +39,6 @@ function ContactUs({toggleCart, cart, onCurrencyChange, currency, currencyChar, 
     };
 
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -74,7 +73,8 @@ function ContactUs({toggleCart, cart, onCurrencyChange, currency, currencyChar, 
             <NavBar toggleCart={toggleCart} cart={cart} formattedAmount={formattedAmount}
                     onCurrencyChange={onCurrencyChange} currencyChar={currencyChar} currency={currency}/>
 
-                <Notification onClose={handleCloseNotification} message={notificationMessage} className={notification ? "show" : ""}/>
+            <Notification onClose={handleCloseNotification} message={notificationMessage}
+                          className={notification ? "show" : ""}/>
             <div className="contact-us">
                 <div className="contact-us-container">
                     <h1 className="contact-us-title">Contact Us</h1>

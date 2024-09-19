@@ -1,0 +1,160 @@
+
+
+.product-page {
+    margin-top: 86px;
+}
+
+.product-page-main{
+    padding:50px;
+}
+
+.product-page-main-container {
+    display: flex;
+    justify-content: center;
+    column-gap: 50px;
+}
+
+.product-page-info-box {
+
+}
+
+.product-page-info-container {
+    padding: 15px;
+    max-width: 500px;
+    min-width: 370px;
+    width: 100%;
+    margin: auto;
+}
+
+.product-page-prod-title {
+    padding: 10px 15px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.product-page-prod-description {
+    padding: 10px 15px;
+    font-size: 15px;
+}
+
+.product-page-prod-price {
+    padding: 10px 15px;
+    font-size: 18px;
+}
+
+.product-page-buttons-container {
+    padding: 10px 15px;
+}
+
+.add-to-cart-secondary-button {
+    width: 100%;
+    border: 2px solid #444444;
+    text-transform: uppercase;
+    color: #444444;
+    height: 45px;
+    font-size: 13px;
+}
+
+.product-page-images {
+    position: relative;
+    max-width: 755px;
+    min-width: 370px;
+
+}
+
+.swiper-container {
+    position: relative;
+    width: 100%;
+
+}
+
+.product-page-product-image {
+    display: block;
+    margin: 0 auto; /* Центрирование изображения */
+    width:80%;
+    height: auto; /* Сохранение пропорций изображения */
+}
+
+.test-slide {
+    padding: 4px;
+
+}
+
+.test-slide.active {
+    border: 1px solid #197BBD;
+}
+
+.test-slide img {
+    width: 46px;
+    height: 46px;
+}
+
+.custom-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: #F5F5F5;
+    color: white;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.custom-control:hover {
+    background-color: #e9e9e9;
+}
+
+.custom-prev {
+    left: 0;
+}
+
+.custom-next {
+    right: 0;
+}
+
+
+.custom-control-image {
+    margin: auto;
+    width: 24px;
+    height: 24px;
+}
+
+
+.product-images-buttons-row {
+    padding-top: 20px;
+    justify-content: center;
+    display: flex;
+    column-gap: 20px;
+}
+
+
+
+@media screen and (max-width: 900px) {
+    .product-page-main-container{
+        flex-direction: column;
+    }
+
+    .custom-control{
+        display:none;
+    }
+
+    .product-page-main{
+        padding:0;
+    }
+
+    .product-page-product-image{
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .product-page-images{
+        margin: auto;
+        max-width: 100%;
+    }
+
+
+}
+
+

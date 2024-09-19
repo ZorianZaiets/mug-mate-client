@@ -27,10 +27,18 @@ function CartModal({cart, toggleCart, removeFromCart, updateQuantity, formattedA
                                 <li key={index} className="cart-item-row">
                                     <div className="splitter"></div>
                                     <div className="item-left-side">
-                                        <div className="cart-image-container">
-                                            <img src={item.img} alt="" className='cart-item-image'/>
-                                        </div>
-                                        <h2 className='cart-item-title'>{item.title}</h2>
+
+                                        <Link to={`/product/${item.id}`} onClick={toggleCart}>
+                                            <div className="cart-image-container">
+                                                <img src={item.img} alt="" className='cart-item-image'/>
+                                            </div>
+                                        </Link>
+
+                                        <Link to={`/product/${item.id}`} className='cart-item-title'
+                                              onClick={toggleCart}>
+                                            <h2>{item.title}</h2>
+                                        </Link>
+
                                     </div>
                                     <div className="item-right-side-wrap">
                                         <div className="item-right-side">
