@@ -141,7 +141,7 @@ function App() {
 
                 <Route path="/order" element={<Order currencyChar={currencyChar} convertPrice={convertPrice} cart={cart}
                                                      totalAmount={totalAmount} formattedAmount={formattedAmount}
-                                                     currency={currency}/>}/>
+                                                     currency={currency} setCart={setCart}/> }/>
 
                 <Route path="/about"
                        element={<About toggleCart={toggleCart} cart={cart} formattedAmount={formattedAmount}

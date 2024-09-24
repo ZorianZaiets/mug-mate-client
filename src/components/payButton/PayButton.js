@@ -2,14 +2,15 @@ import './PayButton.css'
 import {React, useState, useEffect} from 'react';
 
 
-function PayButton({sumToPay, currency}) {
+function PayButton({sumToPay, currency, setPaymentStatus, setOrderId}) {
     const apiUrl = 'https://mug-mate-server.vercel.app';
-    console.log('API_URL:',apiUrl);
 
     const [signature, setSignature] = useState(''); // Стейт для подписи
-    const [data, setData] = useState('');
+    const [data, setData] = useState(''); // Стейт для Data
     const [isLoading, setIsLoading] = useState(false); // Стейт для загрузки
     const [receivedSignature, setReceivedSignature] = useState(false); // Стейт для отслеживания получения подписи
+    const [currentOrderId, setCurrentOrderId] = useState(0);
+    const public_key = "sandbox_i96984545373";
 
 
     const handleSubmit = async (event) => {
@@ -19,15 +20,15 @@ function PayButton({sumToPay, currency}) {
         const orderId = Math.floor(100000 + Math.random() * 900000);
 
         const json_string = {
-            "public_key": "sandbox_i96984545373",
+            "public_key": public_key,
             "version": "3",
             "action": "pay",
             "amount": `${sumToPay}`,
             "currency": `${currency}`,
             "description": "test",
-            "order_id": `${orderId}`
+            "order_id": `${orderId}`,
+            "server_url": 'https://mug-mate-server.vercel.app/api/payment-result',
         }
-
 
         const data2 = btoa(JSON.stringify(json_string));
         setData(data2);
@@ -45,9 +46,9 @@ function PayButton({sumToPay, currency}) {
             const result = await response.json();
             const receivedSignature = result.signature;
 
-            console.log('Signature from server:', result.signature);
 
             if (receivedSignature) {
+                setCurrentOrderId(orderId);
                 setSignature(receivedSignature); // Сохраняем подпись в стейт
                 setReceivedSignature(true); // Устанавливаем флаг, что подпись получена
             }
@@ -58,20 +59,50 @@ function PayButton({sumToPay, currency}) {
         }
     };
 
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
     useEffect(() => {
         if (receivedSignature) {
             // Программно отправляем форму, когда подпись обновилась
             const form = document.getElementById('payment-form');
             form.submit(); // Отправляем форму на LiqPay
+            // Запускаем проверку статуса платежа
+            setFormSubmitted(true);
         }
     }, [receivedSignature]);
+
+
+    const checkPaymentStatus = async () => {
+        console.log('Checking payment status...');
+        try {
+            const response = await fetch(`${apiUrl}/api/payment-status`);
+            const data = await response.json();
+
+            if (data.status === 'success') {
+                setPaymentStatus(true);
+                setOrderId(currentOrderId);
+                setFormSubmitted(false);
+            }
+        } catch (error) {
+            console.error('Ошибка при получении статуса:', error);
+        }
+    };
+
+    useEffect(() => {
+        if (formSubmitted) {
+            const interval = setInterval(checkPaymentStatus, 5000); // Запрос каждые 5 секунд
+            return () => clearInterval(interval); // Очистка интервала при размонтировании компонента
+        }
+
+    }, [formSubmitted]);
 
 
     return (
         <div>
             <form id="payment-form" method="POST" action="https://www.liqpay.ua/api/3/checkout"
                   accept-charset="utf-8"
-                  onSubmit={handleSubmit}>
+                  onSubmit={handleSubmit}
+                  target="_blank">
                 <input type="hidden" name="data"
                        value={data}/>
                 <input type="hidden" name="signature"

@@ -7,9 +7,13 @@ import OrderTotal from "../orderTotal/OrderTotal";
 import OrderConfirmation from "../orderConfirmation/OrderConfirmation";
 import PayButton from "../payButton/PayButton";
 import {Link} from "react-router-dom";
+import PaymentResult from "../paymentResult/PaymentResult";
+import order from "../pages/Order";
 
 
-const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmount, currency}) => {
+const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmount, currency, setCart}) => {
+
+    const apiUrl = 'https://mug-mate-server.vercel.app';
 
     let nova_price = 2.5;
     let ukr_price = 1.1;
@@ -20,12 +24,15 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
 
     const [deliveryPrice, setDeliveryPrice] = useState(ukr_price);
 
-
     const [sumToPay, setSumToPay] = useState(0);
 
     const cartItems = cart.map(({title, quantity}) => ({title, quantity}));
 
     const [isConfirmation, setIsConfirmation] = useState(false);
+
+    const [orderId, setOrderId] = useState(0);
+
+    const [orderCompleted, setOrderCompleted] = useState(false);
 
     const toggleConfirmation = () => {
         setIsConfirmation(!isConfirmation);
@@ -44,7 +51,8 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
         payment: '',
         currency: '',
         sumtopay: '',
-        cartitems: []
+        cartitems: [],
+        order_id: ''
     });
 
     const [errors, setErrors] = useState({});
@@ -76,7 +84,6 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
         }
 
 
-        // Проверка email (простая проверка на "@" и ".")
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!formData.email.trim()) {
             newErrors.email = "Email is required";
@@ -84,7 +91,6 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
             newErrors.email = "Email is not valid";
         }
 
-        // Проверка телефона (только цифры и знак "+")
         const phonePattern = /^[+]?[\d]+$/;
         if (!formData.phone.trim()) {
             newErrors.phone = "Phone is required";
@@ -98,18 +104,17 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
 
     const handleSubmit = () => {
         const validationErrors = validate();
-
+        formData.currency = currency;
+        formData.payment = paymentType;
+        formData.sumtopay = sumToPay;
         formData.post = postType;
         formData.cartitems = cartItems;
 
         if (Object.keys(validationErrors).length === 0) {
-            // Данные валидны
-            console.log("Form submitted", formData);
             setErrors(validationErrors);
             toggleConfirmation();
             window.scrollTo({top: 0, behavior: 'smooth'});
         } else {
-            // Есть ошибки
             setErrors(validationErrors);
         }
 
@@ -130,18 +135,67 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
         };
     }, []);
 
+    const [paymentStatus, setPaymentStatus] = useState(false);
+
+    useEffect(() => {
+        if (paymentStatus) {
+
+            setOrderCompleted(true);
+
+        }
+    }, [paymentStatus]); // Зависимость от paymentStatus
+
+
+    const sendOrderToEmail = async () =>{
+        try {
+            // Отправляем запрос на сервер
+            const response = await fetch(`${apiUrl}/api/send-order-to-email`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({formData}), // Отправляем данные
+            });
+
+            const result = await response.json();
+
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    }
+
+    const makeOrderWithoutPaying = () =>{
+        setOrderId(Math.floor(100000 + Math.random() * 900000));
+        setOrderCompleted(true);
+    }
+
+    useEffect( () =>{
+        if(orderCompleted) {
+            setCart([]);
+            formData.order_id = orderId;
+            console.log('Корзина очищена');
+            sendOrderToEmail();
+        }
+    }, [orderCompleted])
+
+
 
     return (
         <div>
             <header className="order-page-header">
                 <Link to='/' className="nav__logo">MugMate</Link>
             </header>
+            {orderCompleted && <PaymentResult orderId={orderId}/>}
             {isConfirmation ? (
                 <div className="confirmation-row">
                     <div className="confirmation-container">
                         <OrderConfirmation toggleConfirmation={toggleConfirmation}
                                            formData={formData}/>
-                        {!isMobileView && <PayButton sumToPay={sumToPay} currency={currency}/>}
+                        {!isMobileView && (
+                            paymentType === "payNow" ? (<PayButton sumToPay={sumToPay} currency={currency} setPaymentStatus={setPaymentStatus} setOrderId={setOrderId}/>):(
+                                <button className="confirm-order-button" onClick={makeOrderWithoutPaying}>Confirm Order</button>
+                            )
+                            )}
 
                     </div>
 
@@ -151,7 +205,7 @@ const OrderForm = ({currencyChar, convertPrice, cart, totalAmount, formattedAmou
                                     formattedAmount={formattedAmount} setSumToPay={setSumToPay}/>
                         {isMobileView &&
                             <div className="mobile-pay-button-container">
-                                <PayButton sumToPay={sumToPay} currency={currency}/>
+                                <PayButton sumToPay={sumToPay} currency={currency} setPaymentStatus={setPaymentStatus} setOrderId={setOrderId}/>
                             </div>}
 
                     </div>
